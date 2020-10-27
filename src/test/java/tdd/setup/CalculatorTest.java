@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Retro calculator")
 class CalculatorTest {
+
     @Test
     @DisplayName("should display result after adding two positive numbers")
     void calculatorCanDoTwoPlusTwo() {
@@ -15,5 +16,17 @@ class CalculatorTest {
         calc.pressDigitKey(2);
         calc.pressEquals();
         assertEquals("4", calc.readScreen());
+    }
+
+    @Test
+    @DisplayName("should clear the screen after pressing 'clear'")
+    void clearScreen() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEquals();
+        calc.pressClearKey();
+        assertEquals("0", calc.readScreen());
     }
 }
